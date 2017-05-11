@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const Ingredient = require('../models/Ingredients.js');
-const ingredientController = require('../controller/ingredientcontroller');
+const ingredientController = require('../controllers/ingredientController.js');
 
 /* GET home page. */
 router.get('/', ingredientController.getIngredients);
@@ -18,33 +18,17 @@ router.get('/', ingredientController.getIngredients);
 //   })
 // });
 
-router.post('/', (req, res) => {
-  // console.log('reqy.body is:', req.body);
-  const name = req.body.ingredient_name;
-  let ingredient = new Ingredient();
-  ingredient.name = name;
-  ingredient.save()
-    .then(() => {
-      res.redirect('/')
-  })
-})
+router.post('/', ingredientController.postIngredients);
 
-router.get('/ingredients/:id/edit', (req, res) =>{
-  // console.log('reqy.body is:', req.body);
-  Ingredient.findOne({ _id: req.params.id })
-    .then(ingredient => {
-      res.render('editIngredient', {ingredient: ingredient});
-    })
-  // res.send(req.params)
-})
+router.get('/ingredients/:id/edit', ingredientController.editIngredients);
 
-router.post('/ingredients/:id/edit', (req, res) => {
-  Ingredient.findOneAndUpdate({ _id: req.params.id }, req.body, {
-    new: true //returns new ingredient
-  })
-    .then(ingredient => {
-      res.redirect('/')
-  })
-})
+router.post('/ingredients/:id/edit', ingredientController.updateIngredients);
+
+router.get('/ingredients/:id/delete', ingredientController.deleteIngredients);
+
+
+router.get('/api', ingredientController.getIngredientsApi);
+router.post('/api', ingredientController.postIngredientsApi);
+
 
 module.exports = router;
