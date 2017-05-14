@@ -7,10 +7,15 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+const authApi = require('./middleware/authApi');
 
 var mongoose = require ('mongoose');
 
 var app = express();
+
+var jwt = require('jsonwebtoken');
+var token = jwt.sign({email: 'paulina@gmail.com'}, 'secretcode');
+console.log(token)
 
 // creating database - recipe
 mongoose.connect('mongodb://localhost/recipes')
@@ -36,6 +41,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use('/api*', authApi)
 app.use('/', index);
 app.use('/users', users);
 
