@@ -94,9 +94,3 @@ exports.deleteIngredientsApi = (req, res) => {
       res.redirect('/')
   });
 };
-
-// exports.deleteIngredientsApi = (req, res) => {
-//   Ingredient.findOne({ _id: req.params.id }).remove((err, data) => {
-//     res.redirect('/')
-//   });
-// };
