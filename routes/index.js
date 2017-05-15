@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const Ingredient = require('../models/Ingredients.js');
-const ingredientController = require('../controllers/ingredientcontroller.js');
+const ingredientController = require('../controllers/ingredientController.js');
 
 /* GET home page. */
 
