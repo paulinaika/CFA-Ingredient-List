@@ -46,7 +46,7 @@ exports.editIngredients = (req, res) => {
   // console.log('reqy.body is:', req.body);
   Ingredient.findOne({ _id: req.params.id })
     .then(ingredient => {
-      res.render('editIngredient', {ingredient: ingredient});
+      res.render('editIngredientNOW', {ingredient: ingredient});
     });
   // res.send(req.params)
 };
