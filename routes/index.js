@@ -5,7 +5,6 @@ const Ingredient = require('../models/Ingredients.js');
 const ingredientController = require('../controllers/ingredientController.js');
 
 /* GET home page. */
-router.get('/', ingredientController.getIngredients);
 
 // this section is refactored into ingredientcontroller.js
 // function(req, res, next) {
@@ -18,22 +17,24 @@ router.get('/', ingredientController.getIngredients);
 //   })
 // });
 
-router.post('/', ingredientController.postIngredients);
-
-router.get('/ingredients/:id/edit', ingredientController.editIngredients);
-
-router.post('/ingredients/:id/edit', ingredientController.updateIngredients);
-
-router.get('/ingredients/:id/delete', ingredientController.deleteIngredients);
-
+router.get('/', ingredientController.getIngredients);
 router.get('/api', ingredientController.getIngredientsApi);
 
+router.post('/', ingredientController.postIngredients);
 router.post('/api', ingredientController.postIngredientsApi);
 
-router.post('/api/:id', ingredientController.editIngredientsApi);
+router.get('/ingredients/:id/edit', ingredientController.editIngredients);
+router.get('/api/:id/edit', ingredientController.editIngredientsApi);
 
+router.post('/ingredients/:id/edit', ingredientController.updateIngredients);
 router.post('/api/:id/edit', ingredientController.updateIngredientsApi);
 
+router.post('/ingredients/:id/delete', ingredientController.deleteIngredients);
 router.delete('/api/:id/delete', ingredientController.deleteIngredientsApi);
+
+
+
+
+
 
 module.exports = router;

@@ -81,13 +81,22 @@ exports.updateIngredientsApi = (req, res) => {
 
 
 exports.deleteIngredients = (req, res) => {
-  Ingredient.findOne({ _id: req.params.id }).remove((err, data) => {
-    res.redirect('/')
+  Ingredient.findByIdAndRemove({ _id: req.params.id })
+    .then(() => {
+      res.redirect('/')
   });
 };
 
+
 exports.deleteIngredientsApi = (req, res) => {
-  Ingredient.findOne({ _id: req.params.id }).remove((err, data) => {
-    res.redirect('/')
+  Ingredient.findByIdAndRemove({ _id: req.params.id })
+    .then(() => {
+      res.redirect('/')
   });
 };
+
+// exports.deleteIngredientsApi = (req, res) => {
+//   Ingredient.findOne({ _id: req.params.id }).remove((err, data) => {
+//     res.redirect('/')
+//   });
+// };

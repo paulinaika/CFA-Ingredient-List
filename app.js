@@ -18,7 +18,7 @@ var token = jwt.sign({email: 'paulina@gmail.com'}, 'secretcode');
 console.log(token)
 
 // creating database - recipe
-mongoose.connect('mongodb://localhost/recipes')
+mongoose.connect(process.env.DATABASE)
 const { connection:db } = mongoose;
 
 // when the connection error, it will display connection error
