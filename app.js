@@ -19,7 +19,7 @@ console.log(token)
 
 // creating database - recipe
 mongoose.connect(process.env.DATABASE)
-const { connection:db } = mongoose;
+const { connection: db } = mongoose;
 
 // when the connection error, it will display connection error
 db.on('error', console.error.bind(console, 'connection error:'));
